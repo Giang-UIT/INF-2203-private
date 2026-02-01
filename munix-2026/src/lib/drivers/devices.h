@@ -43,5 +43,7 @@ int init_driver_tty(void);
 int init_driver_ramdisk(void);
 int ramdisk_create(void *addr, size_t size, const char *name);
 
+void ramdisk_print(void);
+
 int init_driver_cpiofs(void);
 #endif /* CHRDEV_H */

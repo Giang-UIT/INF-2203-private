@@ -2,6 +2,7 @@
 
 #include <drivers/log.h>
 #include <drivers/vfs.h>
+#include <drivers/devices.h>
 
 #include <core/errno.h>
 #include <core/inttypes.h>
@@ -131,8 +132,12 @@ int elf_read_phdr32(
 
 int elf_load_seg32(struct file *f, Elf32_Phdr *phdr)
 {
-    UNUSED(f), UNUSED(phdr);
-    TODO();
-    return -ENOTSUP;
+    //UNUSED(f), UNUSED(phdr);
+    
+    //file_pread(f, (void *)(uintptr_t) phdr->p_paddr, phdr->p_filesz, phdr->p_offset);
+    ramdisk_create((void *)(uintptr_t) phdr->p_paddr, phdr->p_filesz, "elf_ramdisk");
+    ramdisk_print();
+    
+    return 0;
 }
 
