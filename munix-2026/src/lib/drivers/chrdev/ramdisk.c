@@ -57,6 +57,20 @@ static int ramdisk_debugstr(char *descbuf, size_t n, struct file *f)
     return snprintf(descbuf, n, "ramdisk{%s %p}", rd->name, rd->addr);
 }
 
+void ramdisk_print()
+{
+    pr_info("------------printing out ramdisks devices-------------- \n");
+    for (int i = 0; i < RAMDISKS_MAX; i++) {
+        struct ramdisk *rd = &ramdisks[i];
+        if (rd->addr) {
+            pr_info(
+                    " RAMDISK %d: %s at %p, size %#zx\n", i, rd->name, rd->addr,
+                    rd->rd_size
+            );
+        }
+    }
+}
+
 static ssize_t
 ramdisk_read(struct file *f, void *dst, size_t count, loff_t *off)
 {

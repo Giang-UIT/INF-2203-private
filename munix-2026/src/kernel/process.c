@@ -18,6 +18,8 @@
 #include <core/sprintf.h>
 #include <core/string.h>
 
+#include <drivers/log.h>
+
 #define PROCESS_MAX 8
 static struct process pcb[PROCESS_MAX];
 static pid_t          next_pid = 1;
@@ -56,10 +58,16 @@ int process_load_path(struct process *p, const char *cwd, const char *path)
 
         /* Skip non-load segments. */
         if (phdr.p_type != PT_LOAD) continue;
-
+        
             /* Load. */
-        TODO();
+            
+        elf_load_seg32(&p->execfile, &phdr);
+
+        
+        //TODO();
     }
+
+    
 
     return 0;
 error:
