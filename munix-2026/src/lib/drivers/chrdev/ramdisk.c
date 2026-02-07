@@ -19,6 +19,7 @@ static struct ramdisk ramdisks[RAMDISKS_MAX];
 static int ramdisk_create_inner(void *addr, size_t size, const char *name)
 {
     if (!addr || !size) return -EINVAL;
+    
     for (int i = 0; i < RAMDISKS_MAX; i++) {
         if (!ramdisks[i].addr) {
             ramdisks[i] = (struct ramdisk
@@ -73,8 +74,8 @@ void ramdisk_print()
 
 static ssize_t
 ramdisk_read(struct file *f, void *dst, size_t count, loff_t *off)
-{
-    UNUSED(off);
+{ //For reading file that is mapped to ramdisk
+    //UNUSED(off);
     struct ramdisk *rd = f->f_driver_data;
 
     unsigned char *bdst = dst;

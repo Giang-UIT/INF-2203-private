@@ -134,8 +134,13 @@ int elf_load_seg32(struct file *f, Elf32_Phdr *phdr)
 {
     //UNUSED(f), UNUSED(phdr);
     
-    //file_pread(f, (void *)(uintptr_t) phdr->p_paddr, phdr->p_filesz, phdr->p_offset);
+    
+
     ramdisk_create((void *)(uintptr_t) phdr->p_paddr, phdr->p_filesz, "elf_ramdisk");
+
+    //this function is used to load segments of ELF executable into memory, so that it can be executed.
+    f->f_op->read(f, (void *)(uintptr_t) phdr->p_paddr, phdr->p_filesz, phdr->p_offset);
+    
     ramdisk_print();
     
     return 0;

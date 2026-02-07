@@ -311,7 +311,7 @@ cd gcc-$GCC_VERSION-$CROSS_TARGET
 # From the build directory, run the configure script in the source directory.
 $CROSS_SRC/gcc-$GCC_VERSION/configure \
                 --target=$CROSS_TARGET --prefix=$CROSS_INSTALL --disable-nls \
-                --enable-languages=c --without-headers
+                --enable-languages=c --without-headers --enable-multilib
 
 # Build GCC.
 # NB: This step takes on the order of 5--10 minutes or more,
