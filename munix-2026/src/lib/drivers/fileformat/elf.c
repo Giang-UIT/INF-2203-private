@@ -2,12 +2,13 @@
 
 #include <drivers/log.h>
 #include <drivers/vfs.h>
-#include <drivers/devices.h>
 
 #include <core/errno.h>
 #include <core/inttypes.h>
 #include <core/macros.h>
 #include <core/sprintf.h>
+
+#include <drivers/devices.h>
 
 static int
 e_ident_tostr(char *dst, size_t n, const unsigned char e_ident[EI_NIDENT])
@@ -132,12 +133,19 @@ int elf_read_phdr32(
 
 int elf_load_seg32(struct file *f, Elf32_Phdr *phdr)
 {
-    //UNUSED(f), UNUSED(phdr);
+   //UNUSED(f), UNUSED(phdr);
+
+   
+   f->f_op->read(f, (void *)(uintptr_t) phdr->p_paddr, phdr->p_filesz, (loff_t*)phdr->p_offset);
+   
+   //file_pread(f, (void *)(uintptr_t) phdr->p_paddr, phdr->p_filesz, phdr->p_offset);
     
-    //file_pread(f, (void *)(uintptr_t) phdr->p_paddr, phdr->p_filesz, phdr->p_offset);
-    ramdisk_create((void *)(uintptr_t) phdr->p_paddr, phdr->p_filesz, "elf_ramdisk");
+
+    //ramdisk_create((void *)(uintptr_t) phdr->p_paddr, phdr->p_filesz, "elf_ramdisk");
+    //this function is used to load segments of ELF executable into memory, so that it can be executed.
+    
+    
     ramdisk_print();
-    
     return 0;
 }
 

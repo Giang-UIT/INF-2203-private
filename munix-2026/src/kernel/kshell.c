@@ -398,7 +398,7 @@ int kshell_read_exec(struct kshell *sh)
     /* Search for builtin command. */
     shcmd_fn *cmd = kshell_search_builtins(KSH_CMDS, argv[0]);
     if (cmd) {
-        res = cmd(sh, argc, argv); //Call upon the appropriate cmd function with the given parameters
+        res = cmd(sh, argc, argv);
         reporterr(sh, res, "%s exited with code %d\n", argv[0], res);
         return -EAGAIN;
     }

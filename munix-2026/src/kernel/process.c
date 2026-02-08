@@ -19,6 +19,7 @@
 #include <core/string.h>
 
 #include <drivers/log.h>
+#include <func_call.S> 
 
 #define PROCESS_MAX 8
 static struct process pcb[PROCESS_MAX];
@@ -60,14 +61,11 @@ int process_load_path(struct process *p, const char *cwd, const char *path)
         if (phdr.p_type != PT_LOAD) continue;
         
             /* Load. */
-            
+        
         elf_load_seg32(&p->execfile, &phdr);
 
-        
-        //TODO();
     }
 
-    
 
     return 0;
 error:
@@ -93,13 +91,22 @@ int process_start(struct process *p, int argc, char *argv[])
 
     switch (start_strat) {
     case PSTART_CALL: {
+
+        //Elf32_Phdr phdr;
+        //res = elf_read_phdr32(&p->execfile, &ehdr, i, &phdr);
         /* Start process via simple function call. */
-        UNUSED(p), UNUSED(argc), UNUSED(argv);
-        TODO();
-        return -ENOTSUP;
+        
+       // TODO();
+       //UNUSED(p), UNUSED(argc), UNUSED(argv);
+
+       dispatch((uintptr_t)p->start_addr, argc, argv); 
+       process_close(p);
+       
+       //ramdisk_read(&p->execfile, (void *)(uintptr_t)p->start_addr, phdr.p_filesz, 0);
+
+        //return -ENOTSUP;
     }
     };
 
     return -ENOTSUP;
 }
-

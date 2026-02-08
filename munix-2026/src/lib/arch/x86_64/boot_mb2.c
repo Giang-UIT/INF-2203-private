@@ -99,7 +99,6 @@ int read_boot_info(struct boot_info *b)
         }
 
         case MULTIBOOT_TAG_TYPE_MMAP: {
-
             struct multiboot_tag_mmap *mmap = (void *) tag;
             pr_info("tag: memory map: entry version %u (entry size %ub)\n",
                     mmap->entry_version, mmap->entry_size);
@@ -112,18 +111,6 @@ int read_boot_info(struct boot_info *b)
                 pr_info("\tentry: %#10llx: %#10llx bytes type %u %s\n",
                         e->addr, e->len, e->type, mmap_typestr(e->type));
             }
-            break;
-
-        }
-
-        case MULTIBOOT_TAG_TYPE_MODULE: { //AI written 
-            struct multiboot_tag_module *mod = (void *) tag;
-            pr_info("tag: module: start=%p end=%p cmdline=\"%s\"\n",
-                    (void *) (uintptr_t) mod->mod_start,
-                    (void *) (uintptr_t) mod->mod_end,
-                    mod->cmdline);
-            b->initrd_addr = (void *) (uintptr_t) mod->mod_start;
-            b->initrd_size = mod->mod_end - mod->mod_start;
             break;
         }
 

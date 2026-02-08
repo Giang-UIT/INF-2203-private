@@ -9,8 +9,7 @@
 
 struct boot_info {
     void    *kernel_location;
-    void    *initrd_addr; /*The initial address for /bin/ - virtual filesystem for 
-    processes*/
+    void    *initrd_addr;
     size_t   initrd_size;
     void    *text_fb_addr;
     unsigned text_fb_width;
