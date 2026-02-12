@@ -136,7 +136,7 @@ int elf_load_seg32(struct file *f, Elf32_Phdr *phdr)
    //UNUSED(f), UNUSED(phdr);
 
    
-   f->f_op->read(f, (void *)(uintptr_t) phdr->p_paddr, phdr->p_filesz, (loff_t*)phdr->p_offset);
+   f->f_op->read(f, (void *)(uintptr_t) phdr->p_paddr, phdr->p_filesz, 0);
    
    //file_pread(f, (void *)(uintptr_t) phdr->p_paddr, phdr->p_filesz, phdr->p_offset);
     
