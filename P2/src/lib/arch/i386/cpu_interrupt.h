@@ -21,6 +21,9 @@ typedef unsigned char ivec_t; ///< CPU Interrupt Vector
  * See the CPU manual for a full list.
  */
 enum ivec {
+    IVEC_DER = 0, ///< \#DE - Divide Error
+    IVEC_DF = 8, ///< \#DF - Double Fault
+    IVEC_GP = 13, ///< \#GP - General Protection Fault
     IVEC_PF = 14, ///< \#PF - Page Fault
     IVEC_USER_START = 32, ///< start of vectors available to the OS
     IVEC_SYSCALL = 48, ///< Interrupt vector for syscalls

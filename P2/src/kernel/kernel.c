@@ -2,6 +2,7 @@
 
 #include "kshell.h"
 #include "pagemap.h"
+#include "cpu_interrupt.h"
 
 #include <boot.h>
 #include <cpu.h>
@@ -16,6 +17,7 @@
 #include <core/types.h>
 
 #include <stdalign.h>
+
 
 static struct file      serial1;
 static struct boot_info boot_info;
@@ -74,8 +76,8 @@ int kernel_main(void)
 
     /* Init CPU and memory. */
     init_cpu();
-    // TODO: Initialize Page Map subsystem
-    //init_pm();
+    
+    init_pm(); //initialze page mapping and enable paging, must be done before any memory access.
 
     /* Init more essential drivers. */
     init_driver_ramdisk();

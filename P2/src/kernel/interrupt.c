@@ -5,6 +5,12 @@
 
 #include <drivers/log.h>
 
+/*Dispatch an interrupt to the appropriate handler function
+ *
+ * @param   ivec    Interrupt vector number
+ * @param   idata   Interrupt data (registers, error code, etc.)
+ */
+
 static void handle_exception(ivec_t ivec, struct intrdata *idata)
 {
     const int dbgsz = 256;

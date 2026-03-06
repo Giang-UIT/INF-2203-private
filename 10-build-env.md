@@ -177,19 +177,16 @@ we can build the cross compiler from source.
 First, let's set some variables we will refer to later:
 
 ```{.py}
-# Target architecture: i386 with a generic ELF-based ABI
+
 export CROSS_TARGET=i386-elf
 
-# Versions
-# As of January 2026, these versions match the versions
-# of the system compilers on Ubuntu 24.04 LTS (noble).
+
 export BINUTILS_VERSION=2.40
 export GCC_VERSION=13.4.0
 export GDB_VERSION=15.2
 export GRUB_VERSION=2.06
 
-# GNU FTP mirror site
-#   https://ftpmirror.gnu.org will automatically choose one close to you
+
 export GNU_MIRROR=https://ftpmirror.gnu.org
 ```
 
@@ -206,9 +203,9 @@ your home directory, in `~/projects/uit-inf2203/`.
 You could do something like this:
 
 ```{.py}
-export CROSS_SRC=$HOME/projects/uit-inf2203/cross_src
-export CROSS_BUILD=$HOME/projects/uit-inf2203/cross_src
-export CROSS_INSTALL=$HOME/projects/uit-inf2203/cross_install
+export CROSS_SRC=$HOME/Dokumenter/INF-2203/personal/P2/cross_src
+export CROSS_BUILD=$HOME/Dokumenter/INF-2203/personal/P2/cross_build
+export CROSS_INSTALL=$HOME/Dokumenter/INF-2203/personal/P2/cross_install 
 
 # Make sure the directories exist.
 mkdir -p $CROSS_SRC $CROSS_BUILD $CROSS_INSTALL
@@ -306,7 +303,7 @@ cd $CROSS_BUILD
 
 # Create a GCC directory.
 mkdir gcc-$GCC_VERSION-$CROSS_TARGET
-cd gcc-$GCC_VERSION-$CROSS_TARGET
+    cd gcc-$GCC_VERSION-$CROSS_TARGET
 
 # From the build directory, run the configure script in the source directory.
 $CROSS_SRC/gcc-$GCC_VERSION/configure \
