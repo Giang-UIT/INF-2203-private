@@ -89,3 +89,7 @@ src_only/
 Makefile.buildas
 buildas.h
 .generated-project.*
+
+/cross_src/
+/cross_build/
+/cross_install
