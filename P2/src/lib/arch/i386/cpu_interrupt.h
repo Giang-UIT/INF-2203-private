@@ -1,4 +1,4 @@
-#ifndef CPU_X86_INTERRUPT_H
+    #ifndef CPU_X86_INTERRUPT_H
 #define CPU_X86_INTERRUPT_H
 
 #include "cpu.h"
