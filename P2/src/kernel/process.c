@@ -148,7 +148,7 @@ enum start_strategy {
 
 int process_start(struct process *p, int argc, char *argv[])
 {
-    enum start_strategy start_strat = PSTART_CALL;
+    enum start_strategy start_strat = PSTART_LAUNCH;
 
     current_process = p;
 
@@ -161,6 +161,10 @@ int process_start(struct process *p, int argc, char *argv[])
         pr_info("%s: returned %d\n", argv[0], res);
         return res;
     }
+    case PSTART_LAUNCH:
+        /* Start process by simulating an interrupt return to the entry point. */
+        
+        cpu_user_start(p->start_addr, p->ustack);
     };
 
     return -ENOTSUP;

@@ -77,7 +77,7 @@ int kernel_main(void)
     /* Init CPU and memory. */
     init_cpu();
     
-    init_pm(); //initialze page mapping and enable paging, must be done before any memory access.
+    //init_pm(); //initialze page mapping and enable paging, must be done before any memory access.
 
     /* Init more essential drivers. */
     init_driver_ramdisk();
