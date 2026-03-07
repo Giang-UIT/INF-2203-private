@@ -72,13 +72,13 @@ struct ATTR_PACKED tss32 {
 
 /* === Inline Assembly for CPU operations === */
 
-/** LGDT: Load Global Descriptor Table */
+/** LGDT: Load Global Descriptor Table */ // load GDT register with address of GDT?
 static inline void x86_lgdt(const struct x86_pseudodesc32 *desc)
 {
     asm volatile("lgdt %0" ::"m"(*desc));
 }
 
-/** SGDT: Store Global Descriptor Table */
+/** SGDT: Store Global Descriptor Table */ // store GDT register into memory?
 static inline void x86_sgdt(struct x86_pseudodesc32 *desc)
 {
     asm volatile("sgdt %0" : "=m"(*desc) :);
@@ -341,12 +341,14 @@ void cpu_user_kstack_set(uintptr_t kstack_addr)
     kernel_tss.esp0 = kstack_addr;
 }
 
+/// Start executing user code by simulating an interrupt return to the given start
 noreturn void cpu_user_start(uintptr_t start_addr, uintptr_t ustack_addr)
 {
     x86_segsel_t codeseg, dataseg;
     /* TODO: Use user code and data segments instead. */
-    codeseg = X86_SEGSEL_INIT(KSEG_KERNEL_CODE, PL_USER);
-    dataseg = X86_SEGSEL_INIT(KSEG_KERNEL_DATA, PL_USER);
+
+    codeseg = X86_SEGSEL_INIT(KSEG_USER_CODE, PL_USER);
+    dataseg = X86_SEGSEL_INIT(KSEG_USER_DATA, PL_USER);
 
     /* On i386, the easiest way to switch to a lower privilege level
      * is to return from an interrupt.

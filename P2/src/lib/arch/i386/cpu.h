@@ -82,6 +82,7 @@ static inline void cpu_halt(void) { asm inline volatile("hlt"); }
 int init_cpu(void);
 
 void           cpu_user_kstack_set(uintptr_t kstack_addr);
+
 _Noreturn void cpu_user_start(uintptr_t start_addr, uintptr_t ustack_addr);
 
 long syscall_dispatch(
