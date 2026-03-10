@@ -161,13 +161,31 @@ int process_start(struct process *p, int argc, char *argv[])
         pr_info("%s: returned %d\n", argv[0], res);
         return res;
     }
-    case PSTART_LAUNCH:
+    case PSTART_LAUNCH: {
         /* Start process by simulating an interrupt return to the entry point. */
-        
         cpu_user_start(p->start_addr, p->ustack);
+    }
+        
     };
 
     return -ENOTSUP;
+}
+
+_Noreturn void process_exit(int status)
+{   pr_info("process: %d, (%s) exiting with status %d\n", current_process->pid, current_process->name, status);
+    if (current_process) {
+        process_kill(current_process);
+    }
+    // what happens if current_process is NULL? Just exit to shell?
+    kernel_noreturn();
+}
+
+ssize_t process_write(int fd, const void *src, size_t count)
+{
+    if (fd < 0 || fd >= FD_MAX) return -EBADF;
+    if (!current_process || !current_process->fds[fd]) return -EBADF;
+
+    return file_write(current_process->fds[fd], src, count);
 }
 
 void process_kill(struct process *p)

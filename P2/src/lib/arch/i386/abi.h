@@ -4,6 +4,7 @@
 #define STACK_DOWN 1
 #define STACK_UP   2
 
+/**/
 #if __i386__
 #define STACK_DIR   STACK_DOWN
 #define KSTACK_DFLT 0x10000

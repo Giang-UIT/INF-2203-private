@@ -231,6 +231,8 @@ static struct segdesc32 kernel_gdt[] = {
                 {GDT_COMMON, .type = X86ST_DATA_W, .dpl = PL_KERNEL},
         // TODO: Create user code segment descriptor
         // TODO: Create user data segment descriptor
+        [KSEG_USER_CODE] = {GDT_COMMON, .type = X86ST_CODE_R, .dpl = PL_USER},
+        [KSEG_USER_DATA] = {GDT_COMMON, .type = X86ST_DATA_W, .dpl = PL_USER},
         [KSEG_TSS]       = {}, // Will be initialized at runtime
 };
 
@@ -341,15 +343,16 @@ void cpu_user_kstack_set(uintptr_t kstack_addr)
     kernel_tss.esp0 = kstack_addr;
 }
 
-/// Start executing user code by simulating an interrupt return to the given start
+
 noreturn void cpu_user_start(uintptr_t start_addr, uintptr_t ustack_addr)
 {
     x86_segsel_t codeseg, dataseg;
-    /* TODO: Use user code and data segments instead. */
-
+    
     codeseg = X86_SEGSEL_INIT(KSEG_USER_CODE, PL_USER);
     dataseg = X86_SEGSEL_INIT(KSEG_USER_DATA, PL_USER);
 
+    
+    
     /* On i386, the easiest way to switch to a lower privilege level
      * is to return from an interrupt.
      * We will create a fake interrupt frame on the stack
@@ -371,6 +374,12 @@ noreturn void cpu_user_start(uintptr_t start_addr, uintptr_t ustack_addr)
 
     pr_info("launching process: start_addr=%p, ustack=%p\n",
             (void *) start_addr, (void *) ustack_addr);
+    
+    segdesc32_tostr(dbgbuf, DBGSZ, &kernel_gdt[KSEG_USER_CODE]);
+    pr_info("user code segment descriptor: %s\n", dbgbuf);
+
+    segdesc32_tostr(dbgbuf, DBGSZ, &kernel_gdt[KSEG_USER_DATA]);
+    pr_info("user data segment descriptor: %s\n", dbgbuf);
 
     /* Inline assembly to switch data segments
      * and then IRET to return from fake interrupt. */
@@ -383,6 +392,8 @@ noreturn void cpu_user_start(uintptr_t start_addr, uintptr_t ustack_addr)
             "iret" ::[frame] "r"(&frame),
             [udata] "r"(dataseg)
     );
+
+    
 
     /* Unreachable part of function.
      * Control will never come back to this function after the inline IRET. */
