@@ -114,19 +114,19 @@ const char *ivec_name(ivec_t ivec)
 
 /* TODO: Use ISR and ISR_E macros to define interrupt handler functions. */
 ISR(0, isr0);        ///< Handler for x86 #DE Divide Error
-//ISR(6, isr6);        ///< Handler for x86 #UD Undefined Opcode
+ISR(6, isr6);        ///< Handler for x86 #UD Undefined Opcode
 ISR_E(8, isr8);      ///< Handler for x86 #DF Double Fault
 ISR_E(13, isr13);    ///< Handler for x86 #GP General Protection Fault
-//ISR_E(14, isr14);    ///< Handler for x86 #PF Page Fault
+ISR_E(14, isr14);    ///< Handler for x86 #PF Page Fault
 
 /** Interrupt handler functions to install into the IDT. */
 static const struct handler_to_install HANDLERS[] = {
 /* TODO: Add defined interrupt handlers to this array/ */
 {0, isr0},   /// Divide Error
-//{6, isr6},   /// UNdefined Opcode
+{6, isr6},   /// UNdefined Opcode
 {8, isr8},   /// Double Fault
 {13, isr13}, /// General Protection Fault
-//{14, isr14}, /// Page Fault
+{14, isr14}, /// Page Fault
 };
 
 /* The kernel will provide a syscall entry interrupt handler. */

@@ -25,8 +25,8 @@ static void handle_exception(ivec_t ivec, struct intrdata *idata)
     );
 
     /* Kill current process. */
-    process_kill(current_process);
-    kernel_noreturn();
+    
+    process_exit(ivec);
 }
 
 void interrupt_dispatch(ivec_t ivec, struct intrdata *idata)

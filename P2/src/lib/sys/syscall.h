@@ -9,9 +9,9 @@
 #if __munix__
 enum syscall_nr {
     SYS_NULL = 0,
-    SYS_exit,
+    SYS_exit ,
     SYS_write,
-    SYS_MAX
+    SYS_MAX 
 };
 #endif /* __munix__ */
 
