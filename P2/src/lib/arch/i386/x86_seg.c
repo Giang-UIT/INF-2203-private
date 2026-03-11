@@ -231,8 +231,8 @@ static struct segdesc32 kernel_gdt[] = {
                 {GDT_COMMON, .type = X86ST_DATA_W, .dpl = PL_KERNEL},
         // TODO: Create user code segment descriptor
         // TODO: Create user data segment descriptor
-        [KSEG_USER_CODE] = {GDT_COMMON, .type = X86ST_CODE_R, .dpl = PL_USER},
-        [KSEG_USER_DATA] = {GDT_COMMON, .type = X86ST_DATA_W, .dpl = PL_USER},
+        [KSEG_USER_CODE] = {},
+        [KSEG_USER_DATA] = {},
         [KSEG_TSS]       = {}, // Will be initialized at runtime
 };
 
@@ -348,11 +348,36 @@ noreturn void cpu_user_start(uintptr_t start_addr, uintptr_t ustack_addr)
 {
     x86_segsel_t codeseg, dataseg;
     
+    /* Set up user code and data segments in GDT. */
     codeseg = X86_SEGSEL_INIT(KSEG_USER_CODE, PL_USER);
     dataseg = X86_SEGSEL_INIT(KSEG_USER_DATA, PL_USER);
 
-    
-    
+    kernel_gdt[KSEG_USER_CODE] = (struct segdesc32){
+            .base_low    =((uintptr_t)0 & 0x0000ffff),
+            .base_mid    = ((uintptr_t)0 & 0x0000ffff) >> 16,
+            .base_high   = ((uintptr_t)0 & 0x0000ffff) >> 24,
+            .present     = 1,
+            .limit_low   = (0xffff  & 0x0ffff),
+            .limit_high  = (0xffff  & 0xf0000) >> 16,
+            .type        = X86ST_CODE_R,
+            .dpl         = PL_USER,
+            .granularity = 1,
+            .db          = 1,
+    };
+
+    kernel_gdt[KSEG_USER_DATA] = (struct segdesc32){
+            .base_low    =((uintptr_t)0 & 0x0000ffff),
+            .base_mid    = ((uintptr_t)0 & 0x0000ffff) >> 16,
+            .base_high   = ((uintptr_t)0 & 0x0000ffff) >> 24,
+            .present     = 1,
+            .limit_low   = (0xffff  & 0x0ffff),
+            .limit_high  = (0xffff  & 0xf0000) >> 16,
+            .type        = X86ST_DATA_W,
+            .dpl         = PL_USER,
+            .granularity = 1,
+            .db          = 1,
+           
+    };
     /* On i386, the easiest way to switch to a lower privilege level
      * is to return from an interrupt.
      * We will create a fake interrupt frame on the stack
