@@ -94,7 +94,9 @@ int process_load_path(struct process *p, const char *cwd, const char *path)
         pme_t flags = PME_USER;
         if (phdr.p_flags & PF_W) flags |= PME_W;
 
-        // TODO: set flags appropriately for ELF segment (optional)
+        //pme_set_flags(p->addrspc.root_entry, flags, PML_CR3);
+
+        // TODO: set flags appropriately for ELF segment 
         addrspc_map(&p->addrspc, vaddr, paddr, size, flags);
 
             /* Load. */
@@ -211,6 +213,7 @@ ssize_t process_write(int fd, const void *src, size_t count)
         pr_error("%s", (const char *) src);
     }
     */
+
     return file_write(current_process->fds[fd], src, count); 
 }
 
