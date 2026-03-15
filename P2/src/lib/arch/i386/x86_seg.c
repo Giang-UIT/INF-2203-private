@@ -346,6 +346,11 @@ void cpu_user_kstack_set(uintptr_t kstack_addr)
     kernel_tss.esp0 = kstack_addr;
 }
 
+void cpu_ustack_set(uintptr_t ustack_addr)
+{
+    kernel_tss.esp = ustack_addr;
+}
+
 
 noreturn void cpu_user_start(uintptr_t start_addr, uintptr_t ustack_addr)
 {

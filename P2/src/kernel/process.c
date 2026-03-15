@@ -48,7 +48,7 @@ int process_load_path(struct process *p, const char *cwd, const char *path)
         /* Use this address space.
      * We'll need to update the address space as we load the ELF segments. */
         //TODO: Turn this on when ready
-        pm_set_root(p->addrspc.root_entry);
+        //pm_set_root(p->addrspc.root_entry);
 
     /* Make user stack writeable. */
     size_t    ustack_sz = PAGESZ;
@@ -163,8 +163,9 @@ int process_start(struct process *p, int argc, char *argv[])
     }
     case PSTART_LAUNCH: {
         /* Start process by simulating an interrupt return to the entry point. */
+        cpu_user_kstack_set(p->kstack);
         cpu_user_start(p->start_addr, p->ustack);
-        pr_info("Hello, world!\n");
+        
     }
         
     };
