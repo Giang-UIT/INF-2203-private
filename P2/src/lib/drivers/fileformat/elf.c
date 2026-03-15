@@ -111,6 +111,7 @@ int elf_read_ehdr32(struct file *f, Elf32_Ehdr *ehdr)
     return 0;
 }
 
+
 int elf_read_phdr32(
         struct file *f, Elf32_Ehdr *ehdr, size_t i, Elf32_Phdr *phdr
 )

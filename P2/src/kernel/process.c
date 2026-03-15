@@ -48,7 +48,7 @@ int process_load_path(struct process *p, const char *cwd, const char *path)
         /* Use this address space.
      * We'll need to update the address space as we load the ELF segments. */
         //TODO: Turn this on when ready
-        //pm_set_root(p->addrspc.root_entry);
+        pm_set_root(p->addrspc.root_entry);
 
     /* Make user stack writeable. */
     size_t    ustack_sz = PAGESZ;
@@ -56,9 +56,14 @@ int process_load_path(struct process *p, const char *cwd, const char *path)
             STACK_DIR == STACK_DOWN ? p->ustack - ustack_sz : p->ustack;
     res = addrspc_map(
             &p->addrspc, (void *) ustack_low, ustack_low, ustack_sz,
-            PME_USER | PME_W | PME_PRESENT
+            PME_USER | PME_W
     );
     if (res < 0) goto error;
+
+
+    char * buffer[256];
+    
+    pr_info("printing out PTEs of root table: %s\n", pme_tostr(buffer, 256, p->addrspc.root_entry, 0));
 
     /* Open file. */
     res = file_open_path(&p->execfile, cwd, path);
@@ -74,21 +79,23 @@ int process_load_path(struct process *p, const char *cwd, const char *path)
     /* Load segments. */
     for (int i = 0; i < ehdr.e_phnum; i++) {
         Elf32_Phdr phdr;
+        
         res = elf_read_phdr32(&p->execfile, &ehdr, i, &phdr);
         if (res < 0) goto error;
 
         /* Skip non-load segments. */
         if (phdr.p_type != PT_LOAD) continue;
-
+        
         /* Set permissions for segment pages. */
-        uintptr_t vaddr = ALIGN_DOWN(phdr.p_vaddr, phdr.p_align);
+        uintptr_t vaddr = ALIGN_DOWN(phdr.p_vaddr, phdr.p_align); //2^varr
         uintptr_t paddr = vaddr;
-        size_t    size  = ALIGN_UP(phdr.p_memsz, phdr.p_align);
+        size_t    size  = ALIGN_UP(phdr.p_memsz, phdr.p_align);//2^size
 
         pme_t flags = PME_USER;
         if (phdr.p_flags & PF_W) flags |= PME_W;
 
-            // TODO: set flags appropriately for ELF segment (optional)
+        // TODO: set flags appropriately for ELF segment (optional)
+        addrspc_map(&p->addrspc, vaddr, paddr, size, flags);
 
             /* Load. */
         res = elf_load_seg32(&p->execfile, &phdr);
@@ -162,10 +169,15 @@ int process_start(struct process *p, int argc, char *argv[])
         return res;
     }
     case PSTART_LAUNCH: {
-        /* Start process by simulating an interrupt return to the entry point. */
+
+        /*set the kernel stack for the tss*/
         cpu_user_kstack_set(p->kstack);
+
+        /*Pushes process's arguments into stack before starting it*/
+        push_str(&p->ustack, &argv); 
+
+        /* Start process by simulating an interrupt return to the entry point. */
         cpu_user_start(p->start_addr, p->ustack);
-        
     }
         
     };
@@ -182,12 +194,24 @@ _Noreturn void process_exit(int status)
     kernel_noreturn();
 }
 
+//write to terminal by using pr_info and pr_error. 
 ssize_t process_write(int fd, const void *src, size_t count)
 {
     if (fd < 0 || fd >= FD_MAX) return -EBADF;
-    if (!current_process || !current_process->fds[fd]) return -EBADF;
-
-    return file_write(current_process->fds[fd], src, count);
+    
+    /*
+    if (fd == 1) {
+        // Write to stdout
+        pr_info("writting to stdout: \n");
+        pr_info("%s", (const char *) src);
+    }
+    else if (fd == 2) {
+        // Write to stderr
+        pr_error("writting to stderr: \n");
+        pr_error("%s", (const char *) src);
+    }
+    */
+    return file_write(current_process->fds[fd], src, count); 
 }
 
 void process_kill(struct process *p)

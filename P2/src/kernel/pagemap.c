@@ -76,7 +76,7 @@ static void pme_map_debug(pme_t *entry, int lvl)
     );
 }
 
-/* Map a range of physical pages to virtual memory in the given address space. */
+/* Map a range of physical pages to virtual addresses in the given address space. */
 static int addrspc_map_recursive(
         int      lvl,
         pme_t   *entry,

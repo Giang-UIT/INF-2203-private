@@ -46,6 +46,6 @@ void process_close(struct process *p);
 
 void process_kill(struct process *p);
 _Noreturn void process_exit(int status);
-ssize_t        process_write(int fd, const void *src, size_t count);
+ssize_t        process_write(int fd, const void *src, size_t count); 
 
 #endif /* PROCESS_H */

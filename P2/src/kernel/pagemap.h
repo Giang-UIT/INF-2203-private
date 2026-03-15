@@ -9,7 +9,7 @@ struct physpage {
 };
 
 struct addrspc {
-    pme_t root_entry;
+    pme_t root_entry; //stores the address of root table? 
 };
 
 extern struct addrspc kernel_addrspc;
