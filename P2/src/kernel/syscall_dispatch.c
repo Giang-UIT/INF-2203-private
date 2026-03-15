@@ -27,10 +27,10 @@ long syscall_dispatch(
         process_exit(-1);
     }
     case SYS_write: {
-        pr_info("%s is writting (%s)\n",current_process->name, arg2);
+        process_write(arg1, (char *) arg2, arg3);
         return 0;
     }
-    
+
     case SYS_MAX: break;
 
     }
