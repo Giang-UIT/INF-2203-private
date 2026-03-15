@@ -48,7 +48,7 @@ int process_load_path(struct process *p, const char *cwd, const char *path)
         /* Use this address space.
      * We'll need to update the address space as we load the ELF segments. */
         //TODO: Turn this on when ready
-        //pm_set_root(p->addrspc.root_entry);
+        pm_set_root(p->addrspc.root_entry);
 
     /* Make user stack writeable. */
     size_t    ustack_sz = PAGESZ;
@@ -56,7 +56,7 @@ int process_load_path(struct process *p, const char *cwd, const char *path)
             STACK_DIR == STACK_DOWN ? p->ustack - ustack_sz : p->ustack;
     res = addrspc_map(
             &p->addrspc, (void *) ustack_low, ustack_low, ustack_sz,
-            PME_USER | PME_W
+            PME_USER | PME_W | PME_PRESENT
     );
     if (res < 0) goto error;
 
@@ -88,7 +88,7 @@ int process_load_path(struct process *p, const char *cwd, const char *path)
         pme_t flags = PME_USER;
         if (phdr.p_flags & PF_W) flags |= PME_W;
 
-            // TODO: set flags appropriately for ELF segment
+            // TODO: set flags appropriately for ELF segment (optional)
 
             /* Load. */
         res = elf_load_seg32(&p->execfile, &phdr);
@@ -164,6 +164,7 @@ int process_start(struct process *p, int argc, char *argv[])
     case PSTART_LAUNCH: {
         /* Start process by simulating an interrupt return to the entry point. */
         cpu_user_start(p->start_addr, p->ustack);
+        pr_info("Hello, world!\n");
     }
         
     };
