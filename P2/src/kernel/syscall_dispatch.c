@@ -27,8 +27,8 @@ long syscall_dispatch(
         process_exit(-1);
     }
     case SYS_write: {
-        pr_info("process %d (%s) called SYS_write: arg1=%#x, arg2=%#x, arg3=%#x\n",
-                current_process->pid, current_process->name, arg1, arg2, arg3);
+        pr_info("process %d (%s) called SYS_write: arg1=%#x, arg2=%#x, arg3=%#x, arg4=%#x, arg5=%#x\n",
+                current_process->pid, current_process->name, arg1, arg2, arg3, arg4, arg5);
 
         process_write((int) arg1, (const void *) arg3, (size_t) arg2);
         return 0;

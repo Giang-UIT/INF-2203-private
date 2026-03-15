@@ -60,6 +60,8 @@ static inline size_t pm_tblsz(int lvl)
 #define PME_PRESENT  (1 << 0)
 #define PME_W        (1 << 1)
 #define PME_USER     (1 << 2)
+#define PME_PWT      (1 << 3)
+#define PME_PCD      (1 << 4)
 #define PME_ACCESSED (1 << 5)
 #define PME_DIRTY    (1 << 6)
 
