@@ -171,12 +171,14 @@ int process_start(struct process *p, int argc, char *argv[])
         return res;
     }
     case PSTART_LAUNCH: {
+        uintptr_t * ustack_sp = (uintptr_t*)USTACK_DFLT;
 
         /*set the kernel stack for the tss*/
         cpu_user_kstack_set(p->kstack);
 
-        /*Pushes process's arguments into stack before starting it*/
-        push_str(&p->ustack, &argv); 
+        //push_str(&p->ustack, argv);
+        PUSH(ustack_sp, argc);
+        PUSH(ustack_sp, argv); 
 
         /* Start process by simulating an interrupt return to the entry point. */
         cpu_user_start(p->start_addr, p->ustack);
