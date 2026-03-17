@@ -176,10 +176,13 @@ int process_start(struct process *p, int argc, char *argv[])
         /*set the kernel stack for the tss*/
         cpu_user_kstack_set(p->kstack);
 
-        /*pushing argc and argv to user stack*/
-        uintptr_t * dst = push_str(&p->ustack, &argv);
-
-        PUSH(ustack_sp, dst); 
+        /*pushing argc and arguments to user stack
+          Doing in reverse order because the sp decrements after a push*/
+        for(int i = argc; i >= 0; i --) {
+            uintptr_t * dst = push_str(&ustack_sp, argv[i]);
+            PUSH(ustack_sp, dst); 
+        }
+        
         PUSH(ustack_sp, argc);
         
         /* Start process by simulating an interrupt return to the entry point. */
