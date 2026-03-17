@@ -3,6 +3,7 @@
 int main(int argc, char *argv[])
 {
     printf("Hello, world!\n");
+    printf("the argc: %d\n",argc);
 
     char *progname = argc ? argv[0] : "hello";
     printf("This is the %s program speaking!\n", progname);
