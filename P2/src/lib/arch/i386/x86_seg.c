@@ -72,13 +72,13 @@ struct ATTR_PACKED tss32 {
 
 /* === Inline Assembly for CPU operations === */
 
-/** LGDT: Load Global Descriptor Table */
+/** LGDT: Load Global Descriptor Table */ // load GDT register with address of GDT?
 static inline void x86_lgdt(const struct x86_pseudodesc32 *desc)
 {
     asm volatile("lgdt %0" ::"m"(*desc));
 }
 
-/** SGDT: Store Global Descriptor Table */
+/** SGDT: Store Global Descriptor Table */ // store GDT register into memory?
 static inline void x86_sgdt(struct x86_pseudodesc32 *desc)
 {
     asm volatile("sgdt %0" : "=m"(*desc) :);
@@ -229,8 +229,11 @@ static struct segdesc32 kernel_gdt[] = {
                 {GDT_COMMON, .type = X86ST_CODE_R, .dpl = PL_KERNEL},
         [KSEG_KERNEL_DATA] =
                 {GDT_COMMON, .type = X86ST_DATA_W, .dpl = PL_KERNEL},
+
         // TODO: Create user code segment descriptor
         // TODO: Create user data segment descriptor
+        [KSEG_USER_CODE] = {GDT_COMMON, .type = X86ST_CODE_R, .dpl = PL_USER},
+        [KSEG_USER_DATA] = {GDT_COMMON, .type = X86ST_DATA_W, .dpl = PL_USER},
         [KSEG_TSS]       = {}, // Will be initialized at runtime
 };
 
@@ -333,6 +336,8 @@ int init_cpu(void)
     return 0;
 }
 
+/** Set the kernel stack pointer for the current CPU.
+ * This will be used when switching from user mode to kernel mode. */
 void cpu_user_kstack_set(uintptr_t kstack_addr)
 {
     x86_segsel_t kdata_segsel = X86_SEGSEL_INIT(KSEG_KERNEL_DATA, PL_KERNEL);
@@ -341,12 +346,18 @@ void cpu_user_kstack_set(uintptr_t kstack_addr)
     kernel_tss.esp0 = kstack_addr;
 }
 
+void cpu_ustack_set(uintptr_t ustack_addr)
+{
+    kernel_tss.esp = ustack_addr;
+}
+
+
 noreturn void cpu_user_start(uintptr_t start_addr, uintptr_t ustack_addr)
 {
     x86_segsel_t codeseg, dataseg;
-    /* TODO: Use user code and data segments instead. */
-    codeseg = X86_SEGSEL_INIT(KSEG_KERNEL_CODE, PL_USER);
-    dataseg = X86_SEGSEL_INIT(KSEG_KERNEL_DATA, PL_USER);
+    
+    codeseg = X86_SEGSEL_INIT(KSEG_USER_CODE, PL_USER);
+    dataseg = X86_SEGSEL_INIT(KSEG_USER_DATA, PL_USER);
 
     /* On i386, the easiest way to switch to a lower privilege level
      * is to return from an interrupt.
@@ -360,6 +371,7 @@ noreturn void cpu_user_start(uintptr_t start_addr, uintptr_t ustack_addr)
             .ss    = dataseg,
     };
 
+    
     const size_t DBGSZ = 256;
     char         dbgbuf[DBGSZ];
     pr_debug(
@@ -369,7 +381,16 @@ noreturn void cpu_user_start(uintptr_t start_addr, uintptr_t ustack_addr)
 
     pr_info("launching process: start_addr=%p, ustack=%p\n",
             (void *) start_addr, (void *) ustack_addr);
+    
+    /*
+    segdesc32_tostr(dbgbuf, DBGSZ, &kernel_gdt[KSEG_USER_CODE]);
+    pr_info("user code segment descriptor: %s\n", dbgbuf);
 
+    segdesc32_tostr(dbgbuf, DBGSZ, &kernel_gdt[KSEG_USER_DATA]);
+    pr_info("user data segment descriptor: %s\n", dbgbuf);
+
+    */
+   
     /* Inline assembly to switch data segments
      * and then IRET to return from fake interrupt. */
     asm volatile(
@@ -381,9 +402,10 @@ noreturn void cpu_user_start(uintptr_t start_addr, uintptr_t ustack_addr)
             "iret" ::[frame] "r"(&frame),
             [udata] "r"(dataseg)
     );
+    
+    
 
     /* Unreachable part of function.
      * Control will never come back to this function after the inline IRET. */
     __builtin_unreachable();
 }
-

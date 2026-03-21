@@ -48,7 +48,7 @@ int process_load_path(struct process *p, const char *cwd, const char *path)
         /* Use this address space.
      * We'll need to update the address space as we load the ELF segments. */
         //TODO: Turn this on when ready
-        //pm_set_root(p->addrspc.root_entry);
+        pm_set_root(p->addrspc.root_entry);
 
     /* Make user stack writeable. */
     size_t    ustack_sz = PAGESZ;
@@ -59,6 +59,11 @@ int process_load_path(struct process *p, const char *cwd, const char *path)
             PME_USER | PME_W
     );
     if (res < 0) goto error;
+
+
+    char * buffer[256];
+    
+    pr_info("printing out PTEs of root table: %s\n", pme_tostr(buffer, 256, p->addrspc.root_entry, 0));
 
     /* Open file. */
     res = file_open_path(&p->execfile, cwd, path);
@@ -74,21 +79,25 @@ int process_load_path(struct process *p, const char *cwd, const char *path)
     /* Load segments. */
     for (int i = 0; i < ehdr.e_phnum; i++) {
         Elf32_Phdr phdr;
+        
         res = elf_read_phdr32(&p->execfile, &ehdr, i, &phdr);
         if (res < 0) goto error;
 
         /* Skip non-load segments. */
         if (phdr.p_type != PT_LOAD) continue;
-
+        
         /* Set permissions for segment pages. */
-        uintptr_t vaddr = ALIGN_DOWN(phdr.p_vaddr, phdr.p_align);
+        uintptr_t vaddr = ALIGN_DOWN(phdr.p_vaddr, phdr.p_align); //2^varr
         uintptr_t paddr = vaddr;
-        size_t    size  = ALIGN_UP(phdr.p_memsz, phdr.p_align);
+        size_t    size  = ALIGN_UP(phdr.p_memsz, phdr.p_align);//2^size
 
         pme_t flags = PME_USER;
         if (phdr.p_flags & PF_W) flags |= PME_W;
 
-            // TODO: set flags appropriately for ELF segment
+        //pme_set_flags(p->addrspc.root_entry, flags, PML_CR3);
+
+        // TODO: set flags appropriately for ELF segment 
+        addrspc_map(&p->addrspc, vaddr, paddr, size, flags);
 
             /* Load. */
         res = elf_load_seg32(&p->execfile, &phdr);
@@ -148,7 +157,7 @@ enum start_strategy {
 
 int process_start(struct process *p, int argc, char *argv[])
 {
-    enum start_strategy start_strat = PSTART_CALL;
+    enum start_strategy start_strat = PSTART_LAUNCH;
 
     current_process = p;
 
@@ -161,9 +170,58 @@ int process_start(struct process *p, int argc, char *argv[])
         pr_info("%s: returned %d\n", argv[0], res);
         return res;
     }
+    case PSTART_LAUNCH: {
+        uintptr_t * ustack_sp = (uintptr_t*)p->ustack;
+
+        /*set the kernel stack for the tss*/
+        cpu_user_kstack_set(p->kstack);
+
+        /*pushing argc and arguments to user stack
+          Doing in reverse order because the sp decrements after a push*/
+        for(int i = argc; i >= 0; i --) {
+            uintptr_t * dst = push_str(&ustack_sp, argv[i]);
+            PUSH(ustack_sp, dst); 
+        }
+        
+        PUSH(ustack_sp, argc);
+        
+        /* Start process by simulating an interrupt return to the entry point. */
+        cpu_user_start(p->start_addr, (uintptr_t)ustack_sp);
+    }
+        
     };
 
     return -ENOTSUP;
+}
+
+_Noreturn void process_exit(int status)
+{   pr_info("process: %d, (%s) exiting with status %d\n", current_process->pid, current_process->name, status);
+    if (current_process) {
+        process_kill(current_process);
+    }
+    // what happens if current_process is NULL? Just exit to shell?
+    kernel_noreturn();
+}
+
+//write to terminal by using pr_info and pr_error. 
+ssize_t process_write(int fd, const void *src, size_t count)
+{
+    if (fd < 0 || fd >= FD_MAX) return -EBADF;
+    
+    /*
+    if (fd == 1) {
+        // Write to stdout
+        pr_info("writting to stdout: \n");
+        pr_info("%s", (const char *) src);
+    }
+    else if (fd == 2) {
+        // Write to stderr
+        pr_error("writting to stderr: \n");
+        pr_error("%s", (const char *) src);
+    }
+    */
+
+    return file_write(current_process->fds[fd], src, count); 
 }
 
 void process_kill(struct process *p)
