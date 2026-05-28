@@ -203,9 +203,9 @@ your home directory, in `~/projects/uit-inf2203/`.
 You could do something like this:
 
 ```{.py}
-export CROSS_SRC=$HOME/Dokumenter/INF-2203/personal/P2/cross_src
-export CROSS_BUILD=$HOME/Dokumenter/INF-2203/personal/P2/cross_build
-export CROSS_INSTALL=$HOME/Dokumenter/INF-2203/personal/P2/cross_install 
+export CROSS_SRC=$HOME/Dokumenter/INF-2203/groupWork/P3/cross_src
+export CROSS_BUILD=$HOME/Dokumenter/INF-2203/groupWork/P3/cross_build
+export CROSS_INSTALL=$HOME/Dokumenter/INF-2203/groupWork/P3/cross_install 
 
 # Make sure the directories exist.
 mkdir -p $CROSS_SRC $CROSS_BUILD $CROSS_INSTALL
