@@ -1,0 +1,391 @@
+# Generated dependency file
+lib/drivers/log.o: ../../src/lib/drivers/log.c \
+ ../../src/lib/drivers/log.h ../../src/lib/core/compiler.h \
+ ../../src/lib/core/string.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stddef.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdatomic.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/limits.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdarg.h \
+ ../../src/lib/drivers/vfs.h ../../src/lib/core/list.h \
+ ../../src/lib/core/macros.h ../../src/lib/core/types.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdint.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdint-gcc.h \
+ ../../src/lib/core/errno.h ../../src/lib/core/sprintf.h
+lib/drivers/vfs_fs.o: ../../src/lib/drivers/vfs_fs.c \
+ ../../src/lib/drivers/vfs.h ../../src/lib/core/compiler.h \
+ ../../src/lib/core/list.h ../../src/lib/core/macros.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stddef.h \
+ ../../src/lib/core/types.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdarg.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdint.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdint-gcc.h \
+ ../../src/lib/drivers/devices.h ../../src/lib/drivers/log.h \
+ ../../src/lib/core/string.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdatomic.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/limits.h \
+ ../../src/lib/core/errno.h ../../src/lib/core/path.h \
+ ../../src/lib/core/sprintf.h
+lib/drivers/fileformat/elf.o: ../../src/lib/drivers/fileformat/elf.c \
+ ../../src/lib/oss/elf.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdint.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdint-gcc.h \
+ ../../src/lib/drivers/log.h ../../src/lib/core/compiler.h \
+ ../../src/lib/core/string.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stddef.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdatomic.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/limits.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdarg.h \
+ ../../src/lib/drivers/vfs.h ../../src/lib/core/list.h \
+ ../../src/lib/core/macros.h ../../src/lib/core/types.h \
+ ../../src/lib/core/errno.h ../../src/lib/core/inttypes.h \
+ ../../src/lib/core/sprintf.h
+lib/drivers/chrdev/serial.o: ../../src/lib/drivers/chrdev/serial.c \
+ ../../src/lib/arch/i386/cpu.h ../../src/lib/core/compiler.h \
+ ../../src/lib/core/inttypes.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdint.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdint-gcc.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stddef.h \
+ ../../src/lib/drivers/devices.h ../../src/lib/drivers/vfs.h \
+ ../../src/lib/core/list.h ../../src/lib/core/macros.h \
+ ../../src/lib/core/types.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdarg.h \
+ ../../src/lib/core/errno.h
+lib/drivers/chrdev/ramdisk.o: ../../src/lib/drivers/chrdev/ramdisk.c \
+ ../../src/lib/drivers/devices.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stddef.h \
+ ../../src/lib/drivers/log.h ../../src/lib/core/compiler.h \
+ ../../src/lib/core/string.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdatomic.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/limits.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdarg.h \
+ ../../src/lib/drivers/vfs.h ../../src/lib/core/list.h \
+ ../../src/lib/core/macros.h ../../src/lib/core/types.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdint.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdint-gcc.h \
+ ../../src/lib/core/errno.h ../../src/lib/core/sprintf.h
+lib/drivers/chrdev/tty.o: ../../src/lib/drivers/chrdev/tty.c \
+ ../../src/lib/drivers/devices.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stddef.h \
+ ../../src/lib/drivers/fileformat/ascii.h ../../src/lib/drivers/log.h \
+ ../../src/lib/core/compiler.h ../../src/lib/core/string.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdatomic.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/limits.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdarg.h \
+ ../../src/lib/drivers/vfs.h ../../src/lib/core/list.h \
+ ../../src/lib/core/macros.h ../../src/lib/core/types.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdint.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdint-gcc.h \
+ ../../src/lib/core/ctype.h ../../src/lib/core/errno.h
+lib/drivers/fs/cpiofs.o: ../../src/lib/drivers/fs/cpiofs.c \
+ ../../src/lib/drivers/devices.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stddef.h \
+ ../../src/lib/drivers/log.h ../../src/lib/core/compiler.h \
+ ../../src/lib/core/string.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdatomic.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/limits.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdarg.h \
+ ../../src/lib/drivers/vfs.h ../../src/lib/core/list.h \
+ ../../src/lib/core/macros.h ../../src/lib/core/types.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdint.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdint-gcc.h \
+ ../../src/lib/core/ctype.h ../../src/lib/core/errno.h \
+ ../../src/lib/core/path.h ../../src/lib/core/sprintf.h
+lib/drivers/vfs_file.o: ../../src/lib/drivers/vfs_file.c \
+ ../../src/lib/drivers/vfs.h ../../src/lib/core/compiler.h \
+ ../../src/lib/core/list.h ../../src/lib/core/macros.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stddef.h \
+ ../../src/lib/core/types.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdarg.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdint.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdint-gcc.h \
+ ../../src/lib/drivers/devices.h ../../src/lib/drivers/log.h \
+ ../../src/lib/core/string.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdatomic.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/limits.h \
+ ../../src/lib/core/errno.h ../../src/lib/core/sprintf.h
+lib/core/string_strerror.o: ../../src/lib/core/string_strerror.c \
+ ../../src/lib/core/string.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stddef.h \
+ ../../src/lib/core/errno.h ../../src/lib/core/macros.h \
+ ../../src/lib/core/compiler.h ../../src/lib/core/sprintf.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdarg.h
+lib/core/string.o: ../../src/lib/core/string.c \
+ ../../src/lib/core/string.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stddef.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdint.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdint-gcc.h
+lib/core/sprintf.o: ../../src/lib/core/sprintf.c \
+ ../../src/lib/core/sprintf.h ../../src/lib/core/compiler.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdarg.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stddef.h \
+ ../../src/lib/core/ctype.h ../../src/lib/core/errno.h \
+ ../../src/lib/core/math.h ../../src/lib/core/string.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/float.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/limits.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdbool.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdint.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdint-gcc.h
+lib/core/stdlib.o: ../../src/lib/core/stdlib.c \
+ ../../src/lib/core/stdlib.h ../../src/lib/core/ctype.h
+lib/core/path.o: ../../src/lib/core/path.c ../../src/lib/core/path.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stddef.h \
+ ../../src/lib/core/macros.h ../../src/lib/core/compiler.h \
+ ../../src/lib/core/sprintf.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdarg.h \
+ ../../src/lib/core/string.h
+lib/mulibc/stdio.o: ../../src/lib/mulibc/stdio.c \
+ ../../src/lib/mulibc/stdio.h ../../src/lib/core/compiler.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdarg.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stddef.h \
+ ../../src/lib/mulibc/unistd.h ../../src/lib/core/types.h
+lib/mulibc/unistd.o: ../../src/lib/mulibc/unistd.c \
+ ../../src/lib/mulibc/unistd.h ../../src/lib/core/types.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stddef.h \
+ ../../src/lib/sys/syscall.h
+lib/sys/i386-munix/crt1.o: ../../src/lib/sys/i386-munix/crt1.S
+lib/sys/i386-munix/crt0.o: ../../src/lib/sys/i386-munix/crt0.S
+lib/sys/i386-munix/syscall.o: ../../src/lib/sys/i386-munix/syscall.S \
+ ../../src/lib/core/errno.h
+lib/sys/x86_64-linux/crt1.o: ../../src/lib/sys/x86_64-linux/crt1.S
+lib/sys/x86_64-linux/crt0.o: ../../src/lib/sys/x86_64-linux/crt0.S
+lib/sys/x86_64-linux/syscall.o: ../../src/lib/sys/x86_64-linux/syscall.S \
+ ../../src/lib/core/errno.h
+lib/arch/i386/cpu_pagemap.o: ../../src/lib/arch/i386/cpu_pagemap.c \
+ ../../src/lib/arch/i386/cpu_pagemap.h ../../src/lib/arch/i386/cpu.h \
+ ../../src/lib/core/compiler.h ../../src/lib/core/inttypes.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdint.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdint-gcc.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stddef.h \
+ ../../src/lib/arch/i386/x86_seg.h ../../src/lib/core/macros.h \
+ ../../src/lib/arch/i386/cpu_interrupt.h ../../src/lib/drivers/log.h \
+ ../../src/lib/core/string.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdatomic.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/limits.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdarg.h \
+ ../../src/lib/core/errno.h ../../src/lib/core/sprintf.h
+lib/arch/i386/boot_mb2_asm_i386.o: \
+ ../../src/lib/arch/i386/boot_mb2_asm_i386.S \
+ ../../src/lib/oss/multiboot2.h
+lib/arch/i386/cpu_interrupt.o: ../../src/lib/arch/i386/cpu_interrupt.c \
+ ../../src/lib/arch/i386/cpu_interrupt.h ../../src/lib/arch/i386/cpu.h \
+ ../../src/lib/core/compiler.h ../../src/lib/core/inttypes.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdint.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdint-gcc.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stddef.h \
+ ../../src/lib/arch/i386/x86_seg.h ../../src/lib/drivers/log.h \
+ ../../src/lib/core/string.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdatomic.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/limits.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdarg.h \
+ ../../src/lib/core/macros.h ../../src/lib/core/sprintf.h
+lib/arch/i386/x86_seg.o: ../../src/lib/arch/i386/x86_seg.c \
+ ../../src/lib/arch/i386/x86_seg.h ../../src/lib/core/compiler.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stddef.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdint.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdint-gcc.h \
+ ../../src/lib/arch/i386/abi.h ../../src/lib/arch/i386/cpu.h \
+ ../../src/lib/core/inttypes.h ../../src/lib/arch/i386/cpu_interrupt.h \
+ ../../src/lib/drivers/log.h ../../src/lib/core/string.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdatomic.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/limits.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdarg.h \
+ ../../src/lib/core/macros.h ../../src/lib/core/sprintf.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdnoreturn.h
+lib/arch/i386/boot_mb2.o: ../../src/lib/arch/i386/boot_mb2.c \
+ ../../src/lib/arch/i386/boot.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stddef.h \
+ ../../src/lib/oss/multiboot2.h ../../src/lib/drivers/log.h \
+ ../../src/lib/core/compiler.h ../../src/lib/core/string.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdatomic.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/limits.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdarg.h \
+ ../../src/lib/core/errno.h ../../src/lib/core/inttypes.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdint.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdint-gcc.h \
+ ../../src/lib/core/macros.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdnoreturn.h
+lib/arch/i386/syscall_entry.o: ../../src/lib/arch/i386/syscall_entry.S
+lib/arch/x86_64/cpu_pagemap.o: ../../src/lib/arch/x86_64/cpu_pagemap.c \
+ ../../src/lib/arch/x86_64/cpu_pagemap.h ../../src/lib/arch/x86_64/cpu.h \
+ ../../src/lib/core/compiler.h ../../src/lib/core/inttypes.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdint.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdint-gcc.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stddef.h \
+ ../../src/lib/arch/x86_64/x86_seg.h ../../src/lib/core/macros.h \
+ ../../src/lib/arch/x86_64/cpu_interrupt.h ../../src/lib/drivers/log.h \
+ ../../src/lib/core/string.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdatomic.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/limits.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdarg.h \
+ ../../src/lib/core/errno.h ../../src/lib/core/sprintf.h
+lib/arch/x86_64/boot_mb2_asm_i386.o: \
+ ../../src/lib/arch/x86_64/boot_mb2_asm_i386.S \
+ ../../src/lib/oss/multiboot2.h
+lib/arch/x86_64/cpu_interrupt.o: \
+ ../../src/lib/arch/x86_64/cpu_interrupt.c \
+ ../../src/lib/arch/x86_64/cpu_interrupt.h \
+ ../../src/lib/arch/x86_64/cpu.h ../../src/lib/core/compiler.h \
+ ../../src/lib/core/inttypes.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdint.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdint-gcc.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stddef.h \
+ ../../src/lib/arch/x86_64/x86_seg.h ../../src/lib/drivers/log.h \
+ ../../src/lib/core/string.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdatomic.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/limits.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdarg.h \
+ ../../src/lib/core/macros.h ../../src/lib/core/sprintf.h
+lib/arch/x86_64/x86_seg.o: ../../src/lib/arch/x86_64/x86_seg.c \
+ ../../src/lib/arch/x86_64/x86_seg.h ../../src/lib/core/compiler.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stddef.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdint.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdint-gcc.h \
+ ../../src/lib/arch/x86_64/abi.h ../../src/lib/arch/x86_64/cpu.h \
+ ../../src/lib/core/inttypes.h ../../src/lib/arch/x86_64/cpu_interrupt.h \
+ ../../src/lib/drivers/log.h ../../src/lib/core/string.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdatomic.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/limits.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdarg.h \
+ ../../src/lib/core/macros.h ../../src/lib/core/sprintf.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdnoreturn.h
+lib/arch/x86_64/boot_mb2.o: ../../src/lib/arch/x86_64/boot_mb2.c \
+ ../../src/lib/arch/x86_64/boot.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stddef.h \
+ ../../src/lib/oss/multiboot2.h ../../src/lib/drivers/log.h \
+ ../../src/lib/core/compiler.h ../../src/lib/core/string.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdatomic.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/limits.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdarg.h \
+ ../../src/lib/core/errno.h ../../src/lib/core/inttypes.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdint.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdint-gcc.h \
+ ../../src/lib/core/macros.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdnoreturn.h
+lib/arch/x86_64/syscall_entry.o: \
+ ../../src/lib/arch/x86_64/syscall_entry.S
+kernel/kshell.o: ../../src/kernel/kshell.c ../../src/kernel/kshell.h \
+ ../../src/lib/drivers/vfs.h ../../src/lib/core/compiler.h \
+ ../../src/lib/core/list.h ../../src/lib/core/macros.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stddef.h \
+ ../../src/lib/core/types.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdarg.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdint.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdint-gcc.h \
+ ../../src/kernel/kernel.h ../../src/kernel/process.h \
+ ../../src/kernel/pagemap.h ../../src/lib/arch/i386/cpu_pagemap.h \
+ ../../src/lib/arch/i386/cpu.h ../../src/lib/core/inttypes.h \
+ ../../src/lib/arch/i386/x86_seg.h ../../src/lib/arch/i386/abi.h \
+ ../../src/lib/drivers/devices.h ../../src/lib/drivers/fileformat/ascii.h \
+ ../../src/lib/drivers/log.h ../../src/lib/core/string.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdatomic.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/limits.h \
+ ../../src/lib/core/ctype.h ../../src/lib/core/errno.h \
+ ../../src/lib/core/sprintf.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdbool.h
+kernel/interrupt.o: ../../src/kernel/interrupt.c \
+ ../../src/kernel/kernel.h ../../src/kernel/process.h \
+ ../../src/kernel/pagemap.h ../../src/lib/arch/i386/cpu_pagemap.h \
+ ../../src/lib/arch/i386/cpu.h ../../src/lib/core/compiler.h \
+ ../../src/lib/core/inttypes.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdint.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdint-gcc.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stddef.h \
+ ../../src/lib/arch/i386/x86_seg.h ../../src/lib/core/macros.h \
+ ../../src/lib/arch/i386/abi.h ../../src/lib/drivers/vfs.h \
+ ../../src/lib/core/list.h ../../src/lib/core/types.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdarg.h \
+ ../../src/lib/arch/i386/cpu_interrupt.h ../../src/lib/drivers/log.h \
+ ../../src/lib/core/string.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdatomic.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/limits.h
+kernel/process.o: ../../src/kernel/process.c ../../src/kernel/process.h \
+ ../../src/kernel/pagemap.h ../../src/lib/arch/i386/cpu_pagemap.h \
+ ../../src/lib/arch/i386/cpu.h ../../src/lib/core/compiler.h \
+ ../../src/lib/core/inttypes.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdint.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdint-gcc.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stddef.h \
+ ../../src/lib/arch/i386/x86_seg.h ../../src/lib/core/macros.h \
+ ../../src/lib/arch/i386/abi.h ../../src/lib/drivers/vfs.h \
+ ../../src/lib/core/list.h ../../src/lib/core/types.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdarg.h \
+ ../../src/kernel/kernel.h ../../src/lib/arch/i386/cpu.h \
+ ../../src/lib/drivers/fileformat/elf.h ../../src/lib/oss/elf.h \
+ ../../src/lib/drivers/log.h ../../src/lib/core/string.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdatomic.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/limits.h \
+ ../../src/lib/core/errno.h ../../src/lib/core/path.h \
+ ../../src/lib/core/sprintf.h
+kernel/kernel.o: ../../src/kernel/kernel.c ../../src/kernel/kernel.h \
+ ../../src/kernel/kshell.h ../../src/lib/drivers/vfs.h \
+ ../../src/lib/core/compiler.h ../../src/lib/core/list.h \
+ ../../src/lib/core/macros.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stddef.h \
+ ../../src/lib/core/types.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdarg.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdint.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdint-gcc.h \
+ ../../src/kernel/pagemap.h ../../src/lib/arch/i386/cpu_pagemap.h \
+ ../../src/lib/arch/i386/cpu.h ../../src/lib/core/inttypes.h \
+ ../../src/lib/arch/i386/x86_seg.h \
+ ../../src/lib/arch/i386/cpu_interrupt.h ../../src/lib/arch/i386/boot.h \
+ ../../src/lib/arch/i386/cpu.h ../../src/lib/drivers/devices.h \
+ ../../src/lib/drivers/fileformat/ascii.h ../../src/lib/drivers/log.h \
+ ../../src/lib/core/string.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdatomic.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/limits.h \
+ ../../src/lib/core/errno.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdalign.h
+kernel/pagemap.o: ../../src/kernel/pagemap.c ../../src/kernel/pagemap.h \
+ ../../src/lib/arch/i386/cpu_pagemap.h ../../src/lib/arch/i386/cpu.h \
+ ../../src/lib/core/compiler.h ../../src/lib/core/inttypes.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdint.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdint-gcc.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stddef.h \
+ ../../src/lib/arch/i386/x86_seg.h ../../src/lib/core/macros.h \
+ ../../src/lib/arch/i386/abi.h ../../src/lib/arch/i386/cpu.h \
+ ../../src/lib/drivers/log.h ../../src/lib/core/string.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdatomic.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/limits.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdarg.h \
+ ../../src/lib/core/errno.h ../../src/lib/core/sprintf.h
+kernel/syscall_dispatch.o: ../../src/kernel/syscall_dispatch.c \
+ ../../src/kernel/process.h ../../src/kernel/pagemap.h \
+ ../../src/lib/arch/i386/cpu_pagemap.h ../../src/lib/arch/i386/cpu.h \
+ ../../src/lib/core/compiler.h ../../src/lib/core/inttypes.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdint.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdint-gcc.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stddef.h \
+ ../../src/lib/arch/i386/x86_seg.h ../../src/lib/core/macros.h \
+ ../../src/lib/arch/i386/abi.h ../../src/lib/drivers/vfs.h \
+ ../../src/lib/core/list.h ../../src/lib/core/types.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdarg.h \
+ ../../src/lib/arch/i386/cpu.h ../../src/lib/sys/syscall.h \
+ ../../src/lib/drivers/log.h ../../src/lib/core/string.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdatomic.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/limits.h \
+ ../../src/lib/core/errno.h
+process/eraser-raw.o: ../../src/process/eraser-raw.c \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stddef.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdint.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdint-gcc.h
+process/hello.o: ../../src/process/hello.c ../../src/lib/mulibc/stdio.h \
+ ../../src/lib/core/compiler.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdarg.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stddef.h
+process/hello-raw.o: ../../src/process/hello-raw.c
+process/divzero-raw.o: ../../src/process/divzero-raw.c
+process/plane-raw.o: ../../src/process/plane-raw.c
+process/noop-raw.o: ../../src/process/noop-raw.c
+process/divzero.o: ../../src/process/divzero.c
+process/eraser.o: ../../src/process/eraser.c ../../src/lib/mulibc/stdio.h \
+ ../../src/lib/core/compiler.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdarg.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stddef.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdint.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdint-gcc.h
+process/plane.o: ../../src/process/plane.c ../../src/lib/mulibc/stdio.h \
+ ../../src/lib/core/compiler.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stdarg.h \
+ /opt/homebrew/Cellar/i686-elf-gcc/15.2.0/lib/gcc/i686-elf/15.2.0/include/stddef.h
+process/noop.o: ../../src/process/noop.c
